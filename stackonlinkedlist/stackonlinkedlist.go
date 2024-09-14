@@ -7,16 +7,16 @@ type Stack struct {
 }
 
 type node struct {
-	value rune
+	value any
 	prev  *node
 }
 
-func (s *Stack) isEmpty() bool {
+func (s *Stack) IsEmpty() bool {
 	return s.tail == nil
 }
 
-func (s *Stack) pop() (rune, error) {
-	if s.isEmpty() {
+func (s *Stack) Pop() (any, error) {
+	if s.IsEmpty() {
 		return ' ', fmt.Errorf("stack is empty")
 	}
 
@@ -26,7 +26,7 @@ func (s *Stack) pop() (rune, error) {
 	return value, nil
 }
 
-func (s *Stack) push(value rune) {
+func (s *Stack) Push(value any) {
 	node := &node{
 		value: value,
 		prev:  s.tail,
